@@ -392,7 +392,6 @@
     activities/
       activities.csv
     locations/
-      locations.csv
       locations_anonymized.csv
     scale_data/
       scale_data.json
@@ -423,7 +422,7 @@
           </tr>
           <tr>
             <td><code>locations/</code></td>
-            <td>Location-related records, including anonymized location data when available.</td>
+            <td>Anonymized location traces derived from raw GPS data. Coordinates are transformed and spatially perturbed to prevent re-identification while preserving mobility patterns.</td>
           </tr>
           <tr>
             <td><code>scale_data/</code></td>
@@ -501,4 +500,3 @@
   </main>
 </body>
 </html>
-
