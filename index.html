@@ -1,1 +1,504 @@
-Test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AA@THE Dataset</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --code-bg: #f6f8fa;
+      --link: #2563eb;
+      --link-hover: #1d4ed8;
+      --accent: #0f766e;
+      --accent-bg: #ecfdf5;
+      --warning-bg: #fff7ed;
+      --warning-border: #fed7aa;
+      --warning-text: #9a3412;
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.25;
+      margin-top: 1.8em;
+      margin-bottom: 0.6em;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 2.35rem;
+      margin-top: 0;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 1.15rem;
+    }
+
+    p {
+      margin: 0 0 1rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 760px;
+      margin-top: 10px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.85rem;
+      color: #374151;
+      background: #fafafa;
+    }
+
+    .callout {
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      background: var(--accent-bg);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 20px 0;
+    }
+
+    .warning {
+      border-color: var(--warning-border);
+      border-left-color: #f97316;
+      background: var(--warning-bg);
+      color: var(--warning-text);
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin: 0.35rem 0;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 0.92em;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 0.15em 0.35em;
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      overflow-x: auto;
+      line-height: 1.45;
+      margin: 18px 0;
+    }
+
+    pre code {
+      background: transparent;
+      border: none;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0 26px;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      font-weight: 700;
+      background: #f9fafb;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 18px 0 24px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      background: #fff;
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .card span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .toc {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      background: #fafafa;
+      margin: 26px 0 36px;
+    }
+
+    .toc strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .toc ul {
+      margin: 0;
+    }
+
+    footer {
+      margin-top: 54px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 32px 18px 60px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>AA@THE Dataset</h1>
+      <p class="subtitle">
+        A longitudinal multimodal dataset for studying physical activity, sleep, and well-being in older adults under real-world conditions.
+      </p>
+      <div class="badges">
+        <span class="badge">Longitudinal sensing</span>
+        <span class="badge">Older adults</span>
+        <span class="badge">Wearables</span>
+        <span class="badge">Sleep monitoring</span>
+        <span class="badge">Clinical assessments</span>
+        <span class="badge">GDPR-restricted access</span>
+      </div>
+    </header>
+
+    <section class="toc">
+      <strong>Contents</strong>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#study-design">Study design</a></li>
+        <li><a href="#sensing-ecosystem">Sensing ecosystem</a></li>
+        <li><a href="#dataset-structure">Dataset structure</a></li>
+        <li><a href="#sample">Sample download</a></li>
+        <li><a href="#access">Access policy</a></li>
+        <li><a href="#citation">Citation</a></li>
+      </ul>
+    </section>
+
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>
+        The AA@THE dataset was collected as part of a longitudinal study focused on monitoring older adults in daily life through multimodal wearable and mobile sensing. The study combines continuous behavioral and physiological monitoring with repeated clinical assessments and a structured Adapted Physical Activity (APA) program.
+      </p>
+      <p>
+        The dataset is designed to support research on longitudinal health monitoring, multimodal behavioral modeling, sleep and activity analysis, and machine learning approaches for health-related prediction tasks in aging populations.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <strong>Participants</strong>
+          <span>66 older adults, mean age 72.6 ± 4.4 years.</span>
+        </div>
+        <div class="card">
+          <strong>Duration</strong>
+          <span>Approximately 23 months, from April 2024 to March 2026.</span>
+        </div>
+        <div class="card">
+          <strong>Setting</strong>
+          <span>Real-world, in-the-wild monitoring with home and free-living data collection.</span>
+        </div>
+        <div class="card">
+          <strong>Modalities</strong>
+          <span>Smartwatch, sleep tracker, smart scale, mobile application, EMAs, and clinical tests.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="study-design">
+      <h2>Study design</h2>
+      <p>
+        The study was organized into three phases: a Pilot phase, Phase 1, and Phase 2. Each phase involved continuous remote monitoring and, during structured intervention periods, participation in an APA program delivered by certified trainers. The APA sessions were designed to promote mobility, balance, strength, and cardiovascular health, while also supporting participant engagement with the sensing ecosystem.
+      </p>
+      <p>
+        Participants underwent repeated clinical assessments at baseline, mid-term, and follow-up visits whenever applicable. These assessments provide clinically grounded anchors for interpreting the behavioral, physiological, and sleep-related trajectories collected through remote sensing.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Approximate period</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pilot</td>
+            <td>Apr 2024 – Sep 2024</td>
+            <td>Initial feasibility and deployment validation phase.</td>
+          </tr>
+          <tr>
+            <td>Phase 1</td>
+            <td>Oct 2024 – Mar 2025</td>
+            <td>Long-term monitoring period under stable deployment conditions.</td>
+          </tr>
+          <tr>
+            <td>Phase 2</td>
+            <td>Apr 2025 – Mar 2026</td>
+            <td>Extended monitoring period with additional participants and APA sessions.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="sensing-ecosystem">
+      <h2>Sensing ecosystem</h2>
+      <p>
+        The dataset integrates data from commercial off-the-shelf devices and a custom mobile application. This design supports unobtrusive monitoring in realistic conditions while preserving scalability and participant acceptability.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Device / component</th>
+            <th>Main data types</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Smartwatch</td>
+            <td>Garmin Venu Sq 2</td>
+            <td>Steps, activity intensity, heart rate, SpO₂, stress, breathing rate.</td>
+          </tr>
+          <tr>
+            <td>Sleep tracker</td>
+            <td>Withings Sleep Analyzer</td>
+            <td>Sleep duration, sleep stages, awakenings, snoring, heart rate, breathing rate, AHI.</td>
+          </tr>
+          <tr>
+            <td>Smart scale</td>
+            <td>Garmin Index S2</td>
+            <td>Weight and body composition indicators.</td>
+          </tr>
+          <tr>
+            <td>Mobile app</td>
+            <td>Custom Android / iOS application</td>
+            <td>Daily questionnaires, activity recognition, and location-related data.</td>
+          </tr>
+          <tr>
+            <td>Clinical assessments</td>
+            <td>In-person clinical tests</td>
+            <td>Functional capacity, cognitive status, nutrition, sleep quality, mood, and physiological evaluations.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="dataset-structure">
+      <h2>Dataset structure</h2>
+      <p>
+        The dataset is organized by participant. Each participant is associated with a pseudonymous identifier and a folder containing modality-specific files. The structure below summarizes the expected layout.
+      </p>
+
+      <pre><code>data/
+  subject_XX/
+    activities/
+      activities.csv
+    locations/
+      locations.csv
+      locations_anonymized.csv
+    scale_data/
+      scale_data.json
+    sleep_data/
+      sleep_data.json
+    smartwatch_data/
+      smartwatch_data_activity_summary.json
+      smartwatch_data_heart_rate.json
+      smartwatch_data_respiration.json
+      smartwatch_data_spo2.json
+      smartwatch_data_steps.json
+      smartwatch_data_stress.json
+    survey_data/
+      survey_data.json</code></pre>
+
+      <h3>Main folders</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Folder</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>activities/</code></td>
+            <td>Smartphone-based activity recognition data.</td>
+          </tr>
+          <tr>
+            <td><code>locations/</code></td>
+            <td>Location-related records, including anonymized location data when available.</td>
+          </tr>
+          <tr>
+            <td><code>scale_data/</code></td>
+            <td>Smart scale measurements, including body weight and body composition estimates.</td>
+          </tr>
+          <tr>
+            <td><code>sleep_data/</code></td>
+            <td>Sleep summaries and sleep-related physiological indicators collected through the sleep tracker.</td>
+          </tr>
+          <tr>
+            <td><code>smartwatch_data/</code></td>
+            <td>Smartwatch-derived activity, physiological, and behavioral data streams.</td>
+          </tr>
+          <tr>
+            <td><code>survey_data/</code></td>
+            <td>Daily self-reported questionnaire data collected through the mobile application.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="sample">
+      <h2>Sample download</h2>
+      <p>
+        A small sample of the dataset is available to illustrate the file organization, naming conventions, and data format. The sample is intended only for documentation and code development purposes, and does not contain the full longitudinal dataset.
+      </p>
+      <p>
+        Download the sample archive here:
+        <a href="./sample/aathe_dataset_sample.zip">aathe_dataset_sample.zip</a>
+      </p>
+      <div class="callout">
+        <strong>Note.</strong> If you use GitHub Pages, place the sample archive in a folder named <code>sample/</code> at the root of the repository, or update the link above accordingly.
+      </div>
+    </section>
+
+    <section id="access">
+      <h2>Access policy</h2>
+      <p>
+        Due to the sensitive nature of the data and GDPR regulations, access to the full dataset is restricted to research purposes and requires a formal access procedure. Researchers interested in using the dataset should contact the authors with a short description of the intended research project.
+      </p>
+      <p>
+        Access will be granted only after the required legal steps have been completed, including the signature of a Data Transfer Agreement between the receiving institution and the authors’ institution.
+      </p>
+      <div class="callout warning">
+        <strong>Restricted access.</strong> The full dataset is not publicly downloadable. The public sample only illustrates the dataset structure and format.
+      </div>
+    </section>
+
+    <section id="intended-use">
+      <h2>Intended use</h2>
+      <p>
+        The dataset can support research on longitudinal multimodal sensing, behavioral modeling in older adults, wearable-based health inference, sleep and activity analysis, and machine learning methods for health-related prediction tasks. It can also be used to investigate the role of historical features and long-term behavioral patterns in predictive modeling.
+      </p>
+    </section>
+
+    <section id="citation">
+      <h2>Citation</h2>
+      <p>
+        If you use the AA@THE dataset or its sample in your research, please cite the associated paper:
+      </p>
+      <pre><code>@article{aathe_dataset,
+  title   = {Longitudinal Multimodal Sensing of Physical Activity and Well-Being in Older Adults},
+  author  = {Anonymous Authors},
+  journal = {Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies},
+  year    = {2026},
+  note    = {Under review}
+}</code></pre>
+    </section>
+
+    <footer>
+      <p>
+        AA@THE Dataset documentation. This page is intended as public documentation for the dataset structure, access policy, and sample files.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>
+
